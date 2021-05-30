@@ -12,10 +12,86 @@
 
     <link rel="stylesheet" href="style.css" type="text/css" />
 
-    <script
-      src="https://kit.fontawesome.com/f272fe714d.js"
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
       crossorigin="anonymous"
-    ></script>
+    />
   </head>
-  <body></body>
+  <div class="container">
+    <body>
+      <header>
+        <a href="index.html">
+          <img id="logo" src="/logo.png" alt=" Les Petits Plats, logo" />
+        </a>
+      </header>
+
+      <!--Zone de recherche-->
+      <section class="search">
+        <div class="search-every">
+          <input
+            class="search-all"
+            type="search"
+            placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
+          />
+          <i class="fas fa-search"></i>
+        </div>
+
+        <input class="tags" type="hidden" name="tags" />
+
+        <div id="drop">
+          <div class="drop-ingredients">
+            <div id="drop-ingredients_closed" class="drop-menu_closed">
+              <input
+                type="text"
+                id="ingredients"
+                class="drop-input_closed drop-input_ingredients"
+                placeholder="Ingrédients"
+              />
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div id="drop-ingredients_open" class="drop-menu_open">
+              liste tout
+            </div>
+          </div>
+
+          <div class="drop-appareil">
+            <div id="drop-appareil_closed" class="drop-menu_closed">
+              <input
+                type="text"
+                id="appareil"
+                class="drop-input_closed drop-input_appareil"
+                placeholder="Appareil"
+              />
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div id="drop-appareil_open" class="drop-menu_open">liste tout</div>
+          </div>
+
+          <div class="drop-ustensiles">
+            <div id="drop-ustensiles_closed" class="drop-menu_closed">
+              <input
+                type="text"
+                id="ustensiles"
+                class="drop-input_closed drop-input_ustensiles"
+                placeholder="Ustensiles"
+              />
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div id="drop-ustensiles_open" class="drop-menu_open">
+              liste tout
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <main class="recipes"></main>
+
+      <script src="js/datas.js"></script>
+      <script src="js/Recipe.js"></script>
+      <script src="js/List.js"></script>
+      <script src="js/index.js"></script>
+    </body>
+  </div>
 </html>
