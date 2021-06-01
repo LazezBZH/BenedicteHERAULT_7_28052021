@@ -7,3 +7,6 @@ for (let i = 0; i < recipes.length; i++) {
 }
 
 list.displayRecipes(list.all);
+displayIngredients();
+displayAppliances();
+displayUstensils();

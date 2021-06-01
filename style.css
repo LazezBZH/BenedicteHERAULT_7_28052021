@@ -27,7 +27,7 @@
   margin: 0 0 0 7%;
 }
 
-.search input:focus {
+.search-every input:focus {
   opacity: 100%;
   outline: none;
 }
@@ -67,7 +67,6 @@
 }
 .drop-menu_closed input:focus {
   outline: none;
-  border: 2px solid white;
   color: white;
   font-size: 18px;
 }
@@ -77,6 +76,12 @@
   position: relative;
   top: 20px;
   right: 15px;
+}
+.fa-chevron-up {
+  font-size: 1rem;
+  top: 20px;
+  right: 15px;
+  color: white;
 }
 .drop-menu_closed {
   width: 170px;
@@ -88,15 +93,18 @@
   border-radius: 5px;
 }
 #drop-ingredients_closed,
-#drop-ingredients_closed input {
+#drop-ingredients_closed input,
+#drop-ingredients_open {
   background-color: #3282f7;
 }
 #drop-appareil_closed,
-#drop-appareil_closed input {
+#drop-appareil_closed input,
+#drop-appareil_open {
   background-color: #68d9a4;
 }
 #drop-ustensiles_closed,
-#drop-ustensiles_closed input {
+#drop-ustensiles_closed input,
+#drop-ustensiles_open {
   background-color: #ed6454;
 }
 
@@ -163,4 +171,70 @@ article {
 .title-time {
   width: 70px;
   text-align: right;
+}
+.drop-menu_open {
+  width: 667px;
+  max-height: 397px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.ingredient-tag,
+.appareil-tag,
+.ustensile-tag {
+  width: 222px;
+}
+#drop-ing_open,
+#drop-app_open,
+#drop-ust_open {
+  display: none;
+}
+.search-drop_all {
+  width: 667px;
+}
+.search-drop {
+  width: 640px;
+}
+.search-ing_all,
+.search-ing_all input {
+  height: 22px;
+  background-color: #3282f7;
+  border: none;
+  padding: 0.5rem 0.2rem;
+}
+.search-app_all,
+.search-app_all input {
+  height: 22px;
+  background-color: #68d9a4;
+  border: none;
+  padding: 0.5rem 0.2rem;
+}
+.search-ust_all,
+.search-ust_all input {
+  height: 22px;
+  background-color: #ed6454;
+  border: none;
+  padding: 0.5rem 0.2rem;
+}
+.search-ing_all input:focus,
+.search-app_all input:focus,
+.search-ust_all input:focus {
+  outline: none;
+  font-family: "lato", sans-serif;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+}
+.search-ing_all input::placeholder,
+.search-app_all input::placeholder,
+.search-ust_all input::placeholder {
+  color: white;
+}
+.drop {
+  position: relative;
+}
+.drop-all_open {
+  z-index: 99;
+  position: relative;
+  bottom: 4.4rem;
 }

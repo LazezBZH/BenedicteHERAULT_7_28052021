@@ -13,19 +13,18 @@ class Recipe {
   }
   render() {
     let ingredientHtml = "";
-    for (let i = 0; i < this.ingredients.length; i++) {
-      let ingr = this.ingredients[i];
+    this.ingredients.forEach((ingr) => {
       if (ingr.quantity) {
         if (ingr.unit && ingr.quantity) {
-          ingredientHtml += `<div>${ingr.ingredient} : ${ingr.quantity} ${ingr.unit}</div>`;
+          ingredientHtml += `<div><span class="ingredient" data-id="${ingr.ingredient}">${ingr.ingredient}<span> : ${ingr.quantity} ${ingr.unit}</div>`;
         } else {
-          ingredientHtml += `<div>${ingr.ingredient} : ${ingr.quantity}</div>`;
+          ingredientHtml += `<div><span class="ingredient" data-id="${ingr.ingredient}">${ingr.ingredient}<span> : ${ingr.quantity}</div>`;
         }
       } else {
-        ingredientHtml += `<div>${ingr.ingredient}</div>`;
+        ingredientHtml += `<div><span class="ingredient" data-id="${ingr.ingredient}">${ingr.ingredient}<span></div>`;
       }
-    }
-    //affichage dans page d'accueil
+    });
+
     return `
        <article>
          <div class="photo"></div>

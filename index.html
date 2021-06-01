@@ -23,7 +23,7 @@
     <body>
       <header>
         <a href="index.html">
-          <img id="logo" src="/logo.png" alt=" Les Petits Plats, logo" />
+          <img id="logo" src="logo.png" alt=" Les Petits Plats, logo" />
         </a>
       </header>
 
@@ -41,7 +41,7 @@
         <input class="tags" type="hidden" name="tags" />
 
         <div id="drop">
-          <div class="drop-ingredients">
+          <div class="drop drop-ingredients">
             <div id="drop-ingredients_closed" class="drop-menu_closed">
               <input
                 type="text"
@@ -51,12 +51,22 @@
               />
               <i class="fas fa-chevron-down"></i>
             </div>
-            <div id="drop-ingredients_open" class="drop-menu_open">
-              liste tout
+            <div id="drop-ing_open" class="drop-all_open drop-menu_open">
+              <div class="search-drop_all search-ing_all">
+                <input
+                  class="search-drop search-drop_ing"
+                  type="search"
+                  placeholder="Rechercher un ingrédient"
+                />
+                <i class="fas fa-chevron-up"></i>
+              </div>
+              <div id="drop-ingredients_open" class="drop-menu_open">
+                liste tout
+              </div>
             </div>
           </div>
 
-          <div class="drop-appareil">
+          <div class="drop drop-appareil">
             <div id="drop-appareil_closed" class="drop-menu_closed">
               <input
                 type="text"
@@ -66,10 +76,22 @@
               />
               <i class="fas fa-chevron-down"></i>
             </div>
-            <div id="drop-appareil_open" class="drop-menu_open">liste tout</div>
+            <div id="drop-app_open" class="drop-all_open drop-menu_open">
+              <div class="search-drop_all search-app_all">
+                <input
+                  class="search-drop search-drop_app"
+                  type="search"
+                  placeholder="Rechercher un appareil"
+                />
+                <i class="fas fa-chevron-up"></i>
+              </div>
+              <div id="drop-appareil_open" class="drop-menu_open">
+                liste tout
+              </div>
+            </div>
           </div>
 
-          <div class="drop-ustensiles">
+          <div class="drop drop-ustensiles">
             <div id="drop-ustensiles_closed" class="drop-menu_closed">
               <input
                 type="text"
@@ -79,8 +101,18 @@
               />
               <i class="fas fa-chevron-down"></i>
             </div>
-            <div id="drop-ustensiles_open" class="drop-menu_open">
-              liste tout
+            <div id="drop-ust_open" class="drop-all_open drop-menu_open">
+              <div class="search-drop_all search-ust_all">
+                <input
+                  class="search-drop search-drop_ust"
+                  type="search"
+                  placeholder="Rechercher un ustensile"
+                />
+                <i class="fas fa-chevron-up"></i>
+              </div>
+              <div id="drop-ustensiles_open" class="drop-menu_open">
+                liste tout
+              </div>
             </div>
           </div>
         </div>
@@ -91,6 +123,8 @@
       <script src="js/datas.js"></script>
       <script src="js/Recipe.js"></script>
       <script src="js/List.js"></script>
+      <script src="js/tags.js"></script>
+      <script src="js/drops.js"></script>
       <script src="js/index.js"></script>
     </body>
   </div>
