@@ -13,6 +13,7 @@ class Recipe {
   }
   render() {
     let ingredientHtml = "";
+
     this.ingredients.forEach((ingr) => {
       if (ingr.quantity) {
         if (ingr.unit && ingr.quantity) {

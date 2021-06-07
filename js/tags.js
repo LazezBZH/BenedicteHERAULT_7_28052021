@@ -10,8 +10,10 @@ console.log(allIngredients);
 
 function displayIngredients() {
   let html = "";
+
   allIngredients.forEach((ingr) => {
-    html += `<div class="ingredient-tag" id="${ingr}">${ingr}</div>`;
+    let ingrNorm = ingr.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    html += `<a href="#" class="ingredient-tag" id="${ingrNorm}">${ingr}</a>`;
   });
   document.getElementById("drop-ingredients_open").innerHTML = html;
 }
@@ -29,7 +31,7 @@ console.log(allAppliances);
 function displayAppliances() {
   let html = "";
   allAppliances.forEach((appl) => {
-    html += `<div class="appareil-tag" id="${appl}">${appl}</div>`;
+    html += `<a href="#" class="appareil-tag" id="${appl}">${appl}</a>`;
   });
   document.getElementById("drop-appareil_open").innerHTML = html;
 }
@@ -49,7 +51,7 @@ console.log(allUstensils);
 function displayUstensils() {
   let html = "";
   allUstensils.forEach((ust) => {
-    html += `<div class="ustensile-tag" id="${ust}">${ust}</div>`;
+    html += `<a href="#" class="ustensile-tag" id="${ust}">${ust}</a>`;
   });
   document.getElementById("drop-ustensiles_open").innerHTML = html;
 }

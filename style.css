@@ -50,7 +50,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 1% 7% 0 7%;
+  margin: 1% 7% 0 6.2%;
 }
 .drop-menu_closed input {
   width: 107px;
@@ -79,8 +79,7 @@
 }
 .fa-chevron-up {
   font-size: 1rem;
-  top: 20px;
-  right: 15px;
+
   color: white;
 }
 .drop-menu_closed {
@@ -107,7 +106,15 @@
 #drop-ustensiles_open {
   background-color: #ed6454;
 }
-
+#drop-ingredients_open {
+  padding-left: 1rem;
+}
+#drop-appareil_open {
+  padding-left: 1rem;
+}
+#drop-ustensiles_open {
+  padding-left: 1rem;
+}
 .tags {
   margin-left: 7%;
   margin-top: 1%;
@@ -117,6 +124,8 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  position: absolute;
+  top: 42%;
   margin: 2rem 7% auto 7%;
 }
 article {
@@ -182,18 +191,30 @@ article {
 .ingredient-tag,
 .appareil-tag,
 .ustensile-tag {
-  width: 222px;
+  width: 210px;
 }
 #drop-ing_open,
 #drop-app_open,
 #drop-ust_open {
   display: none;
 }
+#drop-ing_open {
+  border-bottom: solid 1rem #3282f7;
+  border-radius: 5px;
+}
+#drop-app_open {
+  border-bottom: solid 1rem #68d9a4;
+  border-radius: 5px;
+}
+#drop-ust_open {
+  border-bottom: solid 1rem #ed6454;
+  border-radius: 5px;
+}
 .search-drop_all {
   width: 667px;
 }
 .search-drop {
-  width: 640px;
+  width: 630px;
 }
 .search-ing_all,
 .search-ing_all input {
@@ -232,9 +253,18 @@ article {
 }
 .drop {
   position: relative;
+  margin: 2%;
 }
+
 .drop-all_open {
   z-index: 99;
   position: relative;
   bottom: 4.4rem;
+}
+.drop-menu_open a {
+  text-decoration: none;
+  font-style: "lato", sans-serif;
+  font-size: 18;
+  font-weight: 700;
+  color: white;
 }

@@ -1,6 +1,7 @@
 class List {
   constructor() {
     this.all = [];
+    this.activeIng = [];
   }
   add(recipe) {
     this.all.push(recipe);

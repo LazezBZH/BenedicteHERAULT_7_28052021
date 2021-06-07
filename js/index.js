@@ -6,6 +6,7 @@ for (let i = 0; i < recipes.length; i++) {
   list.add(recipe);
 }
 
+//list.listenForFilteringIng();
 list.displayRecipes(list.all);
 displayIngredients();
 displayAppliances();
