@@ -6,6 +6,10 @@
   margin: auto;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 #logo {
   display: block;
   margin: auto;
@@ -106,15 +110,13 @@
 #drop-ustensiles_open {
   background-color: #ed6454;
 }
-#drop-ingredients_open {
-  padding-left: 1rem;
-}
-#drop-appareil_open {
-  padding-left: 1rem;
-}
+#drop-ingredients_open,
+#drop-appareil_open,
 #drop-ustensiles_open {
   padding-left: 1rem;
+  overflow: scroll;
 }
+
 .tags {
   margin-left: 7%;
   margin-top: 1%;

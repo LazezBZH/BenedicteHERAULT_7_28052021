@@ -6,8 +6,12 @@ for (let i = 0; i < recipes.length; i++) {
   list.add(recipe);
 }
 
-//list.listenForFilteringIng();
-list.displayRecipes(list.all);
-displayIngredients();
-displayAppliances();
-displayUstensils();
+list.displayRecipes();
+list.collectIngredients();
+list.displayIngredients();
+list.listenForFilteringIng();
+list.collectAppliances();
+list.displayAppliances();
+list.listenForFilteringAppl();
+
+//displayUstensils();

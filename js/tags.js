@@ -1,4 +1,4 @@
-let allIngredients = new Set();
+/*let allIngredients = new Set();
 
 recipes.forEach((recipe) => {
   recipe.ingredients.forEach((ingr) => {
@@ -12,13 +12,14 @@ function displayIngredients() {
   let html = "";
 
   allIngredients.forEach((ingr) => {
-    let ingrNorm = ingr.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    html += `<a href="#" class="ingredient-tag" id="${ingrNorm}">${ingr}</a>`;
+    html += `<a href="#" class="ingredient-tag" id="${normaliseName(
+      ingr
+    )}">${ingr}</a>`;
   });
   document.getElementById("drop-ingredients_open").innerHTML = html;
 }
 
-//
+//*/
 
 let allAppliances = new Set();
 
@@ -31,7 +32,9 @@ console.log(allAppliances);
 function displayAppliances() {
   let html = "";
   allAppliances.forEach((appl) => {
-    html += `<a href="#" class="appareil-tag" id="${appl}">${appl}</a>`;
+    html += `<a href="#" class="appareil-tag" id="${normaliseName(
+      appl
+    )}">${appl}</a>`;
   });
   document.getElementById("drop-appareil_open").innerHTML = html;
 }
@@ -51,7 +54,18 @@ console.log(allUstensils);
 function displayUstensils() {
   let html = "";
   allUstensils.forEach((ust) => {
-    html += `<a href="#" class="ustensile-tag" id="${ust}">${ust}</a>`;
+    html += `<a href="#" class="ustensile-tag" id="${normaliseName(
+      ust
+    )}">${ust}</a>`;
   });
   document.getElementById("drop-ustensiles_open").innerHTML = html;
+}
+
+function normaliseName(str) {
+  return str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[\ -\']/g, "-")
+    .toLowerCase()
+    .replace(/[\(-\)]/g, "");
 }
