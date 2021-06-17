@@ -11,6 +11,36 @@ class Recipe {
     this.ustensils = data.ustensils;
     this.id = data.id;
   }
+
+  hasIngredient(ingredient) {
+    let exists = false;
+    this.ingredients.forEach((ing) => {
+      if (ing.ingredient === ingredient) {
+        exists = true;
+      }
+    });
+    return exists;
+  }
+
+  hasAppliance(appl) {
+    let exists = false;
+
+    if (this.appliance === appl) {
+      exists = true;
+    }
+    return exists;
+  }
+
+  hasUstensil(ust) {
+    let exists = false;
+    this.ustensils.forEach((ustensil) => {
+      if (ustensil === ust) {
+        exists = true;
+      }
+    });
+    return exists;
+  }
+
   render() {
     let ingredientHtml = "";
 
@@ -28,7 +58,7 @@ class Recipe {
 
     return `
        <article>
-         <div class="photo"></div>
+         <div class="photo"><img src="images/${this.id}.jpg"/></div>
          <div class="article-all">
             <div class="title">
                  <div class="title-txt">${this.name}</div>

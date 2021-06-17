@@ -4,6 +4,7 @@
 .container {
   max-width: 1440px;
   margin: auto;
+  position: relative;
 }
 
 ::-webkit-scrollbar {
@@ -18,7 +19,7 @@
 }
 
 .search-all {
-  width: 86%;
+  width: 91%;
   height: 69px;
   font-size: 18px;
   font-family: "lato", sans-serif;
@@ -31,6 +32,9 @@
   margin: 0 0 0 7%;
 }
 
+.search-every {
+  position: relative;
+}
 .search-every input:focus {
   opacity: 100%;
   outline: none;
@@ -39,8 +43,9 @@
   opacity: 25%;
 }
 .fa-search {
-  position: relative;
-  right: 2.5rem;
+  position: absolute;
+  right: 3rem;
+  top: 1.5rem;
   font-size: 1.5rem;
   cursor: pointer;
 }
@@ -118,21 +123,66 @@
 }
 
 .tags {
-  margin-left: 7%;
-  margin-top: 1%;
+  margin: 1rem 1rem 1rem 7%;
+  display: flex;
+}
+.tags i {
+  font-size: 20px;
+  font-weight: 400;
+  vertical-align: middle;
+  line-height: 37px;
+}
+.tagsIngr,
+.tagsAppl,
+.tagsUst {
+  display: flex;
+}
+.tagIngr,
+.tagAppl,
+.tagUst {
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  font-family: "lato", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  min-width: 107px;
+  height: 37px;
+  padding: 0.2rem 0.5rem;
+  vertical-align: middle;
+  line-height: 37px;
+  border-radius: 5px;
+  margin-right: 1rem;
+}
+.tagIngr {
+  background-color: #3282f7;
+}
+.tagAppl {
+  background-color: #68d9a4;
+}
+.tagUst {
+  background-color: #ed6454;
 }
 
 main {
+  max-width: 1440px;
+  margin-left: 6rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   position: absolute;
-  top: 42%;
-  margin: 2rem 7% auto 7%;
+  top: 100%;
+  left: center;
 }
 article {
-  width: 30%;
-  margin-bottom: 2rem;
+  max-width: 22rem;
+  margin: 2rem 2rem 1rem 0;
+}
+main img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px 5px 0 0;
+  object-fit: cover;
 }
 .photo {
   height: 178px;
@@ -153,13 +203,14 @@ article {
   padding: 0.5rem 1rem;
 }
 .details-ing {
+  padding-right: 1px;
   display: flex;
   flex-direction: column;
   font-style: "lato", sans-serif;
   font-size: 12px;
   width: 171px;
   height: 105px;
-  overflow: hidden;
+  overflow: scroll;
 }
 .details-txt {
   width: 171px;
@@ -167,7 +218,7 @@ article {
   font-style: "roboto", sans-serif;
   font-size: 12px;
   font-weight: 400;
-  overflow: hidden;
+  overflow: scroll;
 }
 .title {
   font-style: "lato", sans-serif;
