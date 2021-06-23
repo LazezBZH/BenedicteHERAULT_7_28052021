@@ -6,3 +6,8 @@ function normaliseName(str) {
     .toLowerCase()
     .replace(/[\(-\)]/g, "");
 }
+
+function sortSet(setList) {
+  let list = Array.from(setList).sort();
+  return new Set(list);
+}

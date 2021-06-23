@@ -10,11 +10,11 @@ list.filtered = list.all;
 
 list.displayRecipes();
 list.collectIngredients();
-list.displayIngredients();
+list.displayIngredients(list.ingredients);
 list.listenForFilteringIng();
 list.collectAppliances();
-list.displayAppliances();
+list.displayAppliances(list.appliances);
 list.listenForFilteringAppl();
 list.collectUstensils();
-list.displayUstensils();
+list.displayUstensils(list.ustensils);
 list.listenForFilteringUst();
