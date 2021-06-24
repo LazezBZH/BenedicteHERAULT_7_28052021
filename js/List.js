@@ -61,7 +61,16 @@ class List {
         this.ingredientsAvailable = this.listAvailableIngredients();
         this.ingredientsAvailable = sortSet(this.ingredientsAvailable);
         this.displayIngredients(this.ingredientsAvailable);
+
+        this.appliancesAvailable = this.listAvailableAppliances();
+        this.appliancesAvailable = sortSet(this.appliancesAvailable);
+        this.displayAppliances(this.appliancesAvailable);
+        this.ustensilsAvailable = this.listAvailableUstensils();
+        this.ustensilsAvailable = sortSet(this.ustensilsAvailable);
+        this.displayUstensils(this.ustensilsAvailable);
         this.listenForFilteringIng();
+        this.listenForFilteringAppl();
+        this.listenForFilteringUst();
         document.getElementById(tagId).innerText = `(${tagName})`;
         document.getElementById(tagId).style.pointerEvents = "none";
         this.closeTags();
@@ -143,7 +152,16 @@ class List {
         this.appliancesAvailable = this.listAvailableAppliances();
         this.appliancesAvailable = sortSet(this.appliancesAvailable);
         this.displayAppliances(this.appliancesAvailable);
+
+        this.ingredientsAvailable = this.listAvailableIngredients();
+        this.ingredientsAvailable = sortSet(this.ingredientsAvailable);
+        this.displayIngredients(this.ingredientsAvailable);
+        this.ustensilsAvailable = this.listAvailableUstensils();
+        this.ustensilsAvailable = sortSet(this.ustensilsAvailable);
+        this.displayUstensils(this.ustensilsAvailable);
         this.listenForFilteringAppl();
+        this.listenForFilteringIng();
+        this.listenForFilteringUst();
         document.getElementById(tagId).innerText = `(${tagName})`;
         document.getElementById(tagId).style.pointerEvents = "none";
         this.closeTags();
@@ -224,10 +242,17 @@ class List {
         this.displayUstensilsTag();
         this.ustensilsAvailable = this.listAvailableUstensils();
         this.ustensilsAvailable = sortSet(this.ustensilsAvailable);
-
         this.displayUstensils(this.ustensilsAvailable);
 
+        this.ingredientsAvailable = this.listAvailableIngredients();
+        this.ingredientsAvailable = sortSet(this.ingredientsAvailable);
+        this.displayIngredients(this.ingredientsAvailable);
+        this.appliancesAvailable = this.listAvailableAppliances();
+        this.appliancesAvailable = sortSet(this.appliancesAvailable);
+        this.displayAppliances(this.appliancesAvailable);
         this.listenForFilteringUst();
+        this.listenForFilteringIng();
+        this.listenForFilteringAppl();
         document.getElementById(tagId).innerText = `(${tagName})`;
         document.getElementById(tagId).style.pointerEvents = "none";
         this.closeTags();
@@ -266,7 +291,7 @@ class List {
     let html = "";
     for (let i = 0; i < this.ustensilsSelected.length; i++) {
       let ustSelected = this.ustensilsSelected[i];
-      html += `<a class="tagUst tagsSelection" data-id="${ustSelected.name}">${ustSelected.name} <i class="far fa-times-circle"></i></a>`;
+      html += `<span class="tagUst tagsSelection" data-id="${ustSelected.name}">${ustSelected.name} <i class="far fa-times-circle"></i></span>`;
     }
     document.querySelector(".tagsUst").innerHTML = html;
   }

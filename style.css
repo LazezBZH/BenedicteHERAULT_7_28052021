@@ -4,9 +4,12 @@
 .container {
   max-width: 1440px;
   margin: auto;
-  position: relative;
 }
-
+#absolute {
+  position: relative;
+  z-index: 1;
+  top: 10%;
+}
 ::-webkit-scrollbar {
   display: none;
 }
@@ -16,6 +19,10 @@
   margin: auto;
   height: 93px;
   margin-bottom: 1rem;
+}
+
+.search {
+  width: 100%;
 }
 
 .search-all {
@@ -60,7 +67,10 @@
   flex-direction: row;
   justify-content: space-between;
   margin: 1% 7% 0 6.2%;
+  position: absolute;
+  z-index: 3;
 }
+
 .drop-menu_closed input {
   width: 107px;
   height: 22px;
@@ -121,7 +131,16 @@
   padding-left: 1rem;
   overflow: scroll;
 }
-
+.drop-ingredients {
+  margin-right: 0.5rem;
+}
+.drop-appareil {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+.drop-ustensiles {
+  margin-left: 0.5rem;
+}
 .tags {
   margin: 1rem 1rem 1rem 7%;
   display: flex;
@@ -136,11 +155,13 @@
 .tagsAppl,
 .tagsUst {
   display: flex;
+  flex-wrap: wrap;
 }
 .tagIngr,
 .tagAppl,
 .tagUst {
   display: flex;
+
   justify-content: space-around;
   color: white;
   font-family: "lato", sans-serif;
@@ -153,6 +174,7 @@
   line-height: 37px;
   border-radius: 5px;
   margin-right: 1rem;
+  margin-bottom: 1rem;
 }
 .tagIngr {
   background-color: #3282f7;
@@ -166,13 +188,14 @@
 
 main {
   max-width: 1440px;
+  margin-top: 4%;
   margin-left: 6rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   position: absolute;
-  top: 100%;
-  left: center;
+  z-index: 2;
+  top: 0;
 }
 article {
   max-width: 22rem;
@@ -253,6 +276,7 @@ main img {
 }
 #drop-ing_open {
   border-bottom: solid 1rem #3282f7;
+
   border-radius: 5px;
 }
 #drop-app_open {
@@ -304,9 +328,10 @@ main img {
 .search-ust_all input::placeholder {
   color: white;
 }
-.drop {
+#drop {
   position: relative;
-  margin: 2%;
+  margin-left: 7%;
+  margin-top: 0;
 }
 
 .drop-all_open {
@@ -320,4 +345,60 @@ main img {
   font-size: 18;
   font-weight: 700;
   color: white;
+}
+
+/*RESPONSIVE*/
+@media screen and (max-width: 800px) {
+  .fa-search {
+    right: 2rem;
+  }
+  .tags,
+  .tagsIngr,
+  .tagsAppl,
+  .tagsUst {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .search-every {
+    width: 94%;
+    margin: 0;
+  }
+  #drop {
+    margin: 0 7%;
+
+    flex-direction: column;
+    width: 85%;
+  }
+  .drop {
+    margin-bottom: 2%;
+  }
+  .drop-menu_closed,
+  .drop-menu_open {
+    width: 100%;
+  }
+  main {
+    margin: 15rem auto auto auto;
+  }
+  article {
+    margin: auto;
+    margin-bottom: 2%;
+  }
+  .fa-chevron-up {
+    font-size: 1rem;
+
+    color: white;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+  }
+  .drop-ingredients {
+    margin-right: 0rem;
+  }
+  .drop-appareil {
+    margin-right: 0rem;
+    margin-left: 0rem;
+  }
+  .drop-ustensiles {
+    margin-left: 0rem;
+  }
 }
