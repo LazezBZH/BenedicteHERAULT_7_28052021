@@ -7,6 +7,16 @@ function normaliseName(str) {
     .replace(/[\(-\)]/g, "");
 }
 
+function normaliseForSearch(str) {
+  return str
+    .replace("dans", "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[\(-\)]/g, "")
+    .replace(/[^a-zA-Z ]/g, " ");
+}
+
 function sortSet(setList) {
   let list = Array.from(setList).sort();
   return new Set(list);

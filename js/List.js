@@ -8,6 +8,9 @@ class List {
     this.ustensils = [];
     this.ustensilsSelected = [];
   }
+
+  //COLLECTER ET AFFICHER LES RECETTES
+
   add(recipe) {
     list.all.push(recipe);
   }
@@ -21,6 +24,11 @@ class List {
     document.querySelector("main").innerHTML = html;
   }
 
+  /*   FILTRES SUR LES LISTES DANS LE DROPDOWN   */
+
+  //INGREDIENTS
+
+  //collecter et afficher
   collectIngredients() {
     this.filtered.forEach((recipe) => {
       recipe.ingredients.forEach((ingr) => {
@@ -42,6 +50,7 @@ class List {
     document.getElementById("drop-ingredients_open").innerHTML = html;
   }
 
+  //filtrer sur la liste des ingrédients
   listenForFilteringIng() {
     document.querySelectorAll(".ingredient-tag").forEach((tag) => {
       tag.addEventListener("click", (e) => {
@@ -58,6 +67,7 @@ class List {
         this.filterByIng();
         this.displayRecipes();
         this.diplayIngredientTag();
+
         this.ingredientsAvailable = this.listAvailableIngredients();
         this.ingredientsAvailable = sortSet(this.ingredientsAvailable);
         this.displayIngredients(this.ingredientsAvailable);
@@ -65,15 +75,17 @@ class List {
         this.appliancesAvailable = this.listAvailableAppliances();
         this.appliancesAvailable = sortSet(this.appliancesAvailable);
         this.displayAppliances(this.appliancesAvailable);
+
         this.ustensilsAvailable = this.listAvailableUstensils();
         this.ustensilsAvailable = sortSet(this.ustensilsAvailable);
         this.displayUstensils(this.ustensilsAvailable);
+
         this.listenForFilteringIng();
         this.listenForFilteringAppl();
         this.listenForFilteringUst();
-        document.getElementById(tagId).innerText = `(${tagName})`;
-        document.getElementById(tagId).style.pointerEvents = "none";
+
         this.closeTags();
+        this.disableAllSelectedTag();
         closeAll();
       });
     });
@@ -96,6 +108,7 @@ class List {
     console.log(this.filtered);
   }
 
+  //réupérer les ingrédients restants dans les recettes sélectionnées afin de ne plus afficher que ceux-ci dans la liste
   listAvailableIngredients() {
     let list = new Set();
     this.filtered.forEach((recipe) => {
@@ -106,6 +119,7 @@ class List {
     return list;
   }
 
+  //afficher les tags au dessus du drop
   diplayIngredientTag() {
     let html = "";
     for (let i = 0; i < this.ingredientsSelected.length; i++) {
@@ -115,7 +129,9 @@ class List {
     document.querySelector(".tagsIngr").innerHTML = html;
   }
 
-  //appliance
+  //APPLIANCE
+
+  //collecter et afficher
   collectAppliances() {
     this.filtered.forEach((recipe) => {
       this.appliances.push(recipe.appliance);
@@ -133,6 +149,7 @@ class List {
     document.getElementById("drop-appareil_open").innerHTML = html;
   }
 
+  //filtrer sur la liste des appareils
   listenForFilteringAppl() {
     document.querySelectorAll(".appareil-tag").forEach((tag) => {
       tag.addEventListener("click", (e) => {
@@ -149,6 +166,7 @@ class List {
         this.filterByAppl();
         this.displayRecipes();
         this.diplayApplianceTag();
+
         this.appliancesAvailable = this.listAvailableAppliances();
         this.appliancesAvailable = sortSet(this.appliancesAvailable);
         this.displayAppliances(this.appliancesAvailable);
@@ -156,15 +174,17 @@ class List {
         this.ingredientsAvailable = this.listAvailableIngredients();
         this.ingredientsAvailable = sortSet(this.ingredientsAvailable);
         this.displayIngredients(this.ingredientsAvailable);
+
         this.ustensilsAvailable = this.listAvailableUstensils();
         this.ustensilsAvailable = sortSet(this.ustensilsAvailable);
         this.displayUstensils(this.ustensilsAvailable);
+
         this.listenForFilteringAppl();
         this.listenForFilteringIng();
         this.listenForFilteringUst();
-        document.getElementById(tagId).innerText = `(${tagName})`;
-        document.getElementById(tagId).style.pointerEvents = "none";
+
         this.closeTags();
+        this.disableAllSelectedTag();
         closeAll();
       });
     });
@@ -186,6 +206,7 @@ class List {
     console.log(this.filtered);
   }
 
+  //réupérer les appareils restants dans les recettes sélectionnées afin de ne plus afficher que ceux-ci dans la liste
   listAvailableAppliances() {
     let list = new Set();
     this.filtered.forEach((recipe) => {
@@ -194,6 +215,7 @@ class List {
     return list;
   }
 
+  //afficher les tags au dessus du drop
   diplayApplianceTag() {
     let html = "";
     for (let i = 0; i < this.applianceSelected.length; i++) {
@@ -203,7 +225,9 @@ class List {
     document.querySelector(".tagsAppl").innerHTML = html;
   }
 
-  //ustensils
+  //USTENSILS
+
+  //collecter et afficher
   collectUstensils() {
     this.filtered.forEach((recipe) => {
       recipe.ustensils.forEach((ust) => {
@@ -224,6 +248,7 @@ class List {
     document.getElementById("drop-ustensiles_open").innerHTML = html;
   }
 
+  //filtrer sur la liste des ustensiles
   listenForFilteringUst() {
     document.querySelectorAll(".ustensile-tag").forEach((tag) => {
       tag.addEventListener("click", (e) => {
@@ -240,6 +265,7 @@ class List {
         this.filterByUst();
         this.displayRecipes();
         this.displayUstensilsTag();
+
         this.ustensilsAvailable = this.listAvailableUstensils();
         this.ustensilsAvailable = sortSet(this.ustensilsAvailable);
         this.displayUstensils(this.ustensilsAvailable);
@@ -247,15 +273,17 @@ class List {
         this.ingredientsAvailable = this.listAvailableIngredients();
         this.ingredientsAvailable = sortSet(this.ingredientsAvailable);
         this.displayIngredients(this.ingredientsAvailable);
+
         this.appliancesAvailable = this.listAvailableAppliances();
         this.appliancesAvailable = sortSet(this.appliancesAvailable);
         this.displayAppliances(this.appliancesAvailable);
+
         this.listenForFilteringUst();
         this.listenForFilteringIng();
         this.listenForFilteringAppl();
-        document.getElementById(tagId).innerText = `(${tagName})`;
-        document.getElementById(tagId).style.pointerEvents = "none";
+
         this.closeTags();
+        this.disableAllSelectedTag();
         closeAll();
       });
     });
@@ -277,6 +305,7 @@ class List {
     console.log(this.filtered);
   }
 
+  //réupérer les ustensils restants dans les recettes sélectionnées afin de ne plus afficher que ceux-ci dans la liste
   listAvailableUstensils() {
     let list = new Set();
     this.filtered.forEach((recipe) => {
@@ -287,6 +316,7 @@ class List {
     return list;
   }
 
+  //afficher ou supprimer les tags au dessus du drop
   displayUstensilsTag() {
     let html = "";
     for (let i = 0; i < this.ustensilsSelected.length; i++) {
@@ -295,6 +325,8 @@ class List {
     }
     document.querySelector(".tagsUst").innerHTML = html;
   }
+
+  //supprimer tags au dessus des drops
   closeTags() {
     document.querySelectorAll(".fa-times-circle").forEach((cross) => {
       cross.addEventListener("click", (e) => {
@@ -304,4 +336,20 @@ class List {
       });
     });
   }
+
+  //changer l'affichage des ingrédients sélectionnés
+  disableAllSelectedTag() {
+    this.alltagsSelected = this.ingredientsSelected.concat(
+      this.ustensilsSelected,
+      this.applianceSelected
+    );
+    for (let i = 0; i < this.alltagsSelected.length; i++) {
+      let tagIId = this.alltagsSelected[i].id;
+      let tagIName = this.alltagsSelected[i].name;
+      document.getElementById(tagIId).innerText = `(${tagIName})`;
+      document.getElementById(tagIId).style.pointerEvents = "none";
+    }
+  }
+
+  /*   BARRE DE RECHERCHE PRINCIPALE  */
 }

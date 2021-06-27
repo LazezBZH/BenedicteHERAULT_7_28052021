@@ -18,3 +18,4 @@ list.listenForFilteringAppl();
 list.collectUstensils();
 list.displayUstensils(list.ustensils);
 list.listenForFilteringUst();
+concatAllRecipeTerms();

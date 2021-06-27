@@ -348,7 +348,7 @@ main img {
 }
 
 /*RESPONSIVE*/
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 892px) {
   .fa-search {
     right: 2rem;
   }
