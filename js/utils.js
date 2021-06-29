@@ -9,7 +9,7 @@ function normaliseName(str) {
 
 function normaliseForSearch(str) {
   return str
-    .replace("dans", "")
+
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
