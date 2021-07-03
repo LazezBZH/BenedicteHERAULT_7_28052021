@@ -389,7 +389,23 @@ class List {
         this.filterByIng();
         this.filterByUst();
         this.filterByAppl();
+        this.appliancesAvailable = this.listAvailableAppliances();
+        this.appliancesAvailable = sortSet(this.appliancesAvailable);
+        this.displayAppliances(this.appliancesAvailable);
+
+        this.ingredientsAvailable = this.listAvailableIngredients();
+        this.ingredientsAvailable = sortSet(this.ingredientsAvailable);
+        this.displayIngredients(this.ingredientsAvailable);
+
+        this.ustensilsAvailable = this.listAvailableUstensils();
+        this.ustensilsAvailable = sortSet(this.ustensilsAvailable);
+        this.displayUstensils(this.ustensilsAvailable);
         this.displayRecipes();
+        this.disableAllSelectedTag();
+
+        this.listenForFilteringIng();
+        this.listenForFilteringUst();
+        this.listenForFilteringAppl();
       });
     });
   }
