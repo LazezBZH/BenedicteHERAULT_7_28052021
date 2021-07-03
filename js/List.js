@@ -7,6 +7,7 @@ class List {
     this.applianceSelected = [];
     this.ustensils = [];
     this.ustensilsSelected = [];
+    this.alltagsSelected = [];
   }
 
   //COLLECTER ET AFFICHER LES RECETTES
@@ -54,7 +55,7 @@ class List {
   listenForFilteringIng() {
     document.querySelectorAll(".ingredient-tag").forEach((tag) => {
       tag.addEventListener("click", (e) => {
-        console.log("on a cliqué sur " + e.target.getAttribute("data-name"));
+        //console.log("on a cliqué sur " + e.target.getAttribute("data-name"));
         let tagId = e.target.getAttribute("id");
         let tagName = e.target.getAttribute("data-name");
         this.ingredientsSelected.push({
@@ -62,7 +63,7 @@ class List {
           name: tagName,
         });
 
-        console.log(this.ingredientsSelected);
+        //console.log(this.ingredientsSelected);
 
         this.filterByIng();
         this.displayRecipes();
@@ -84,8 +85,10 @@ class List {
         this.listenForFilteringAppl();
         this.listenForFilteringUst();
 
-        this.closeTags();
         this.disableAllSelectedTag();
+
+        this.closeTags();
+
         closeAll();
       });
     });
@@ -105,7 +108,7 @@ class List {
       return false;
     });
 
-    console.log(this.filtered);
+    //console.log(this.filtered);
   }
 
   //réupérer les ingrédients restants dans les recettes sélectionnées afin de ne plus afficher que ceux-ci dans la liste
@@ -124,7 +127,7 @@ class List {
     let html = "";
     for (let i = 0; i < this.ingredientsSelected.length; i++) {
       let ingSelected = this.ingredientsSelected[i];
-      html += `<span class="tagIngr tagsSelection">${ingSelected.name}  <i class="far fa-times-circle"></i></span>`;
+      html += `<span class="tagIngr tagsSelection" data-name="${ingSelected.name}" data-id="${ingSelected.id}">${ingSelected.name}  <i class="far fa-times-circle"></i></span>`;
     }
     document.querySelector(".tagsIngr").innerHTML = html;
   }
@@ -153,7 +156,7 @@ class List {
   listenForFilteringAppl() {
     document.querySelectorAll(".appareil-tag").forEach((tag) => {
       tag.addEventListener("click", (e) => {
-        console.log("on a cliqué sur " + e.target.getAttribute("data-name"));
+        //console.log("on a cliqué sur " + e.target.getAttribute("data-name"));
         let tagId = e.target.getAttribute("id");
         let tagName = e.target.getAttribute("data-name");
         this.applianceSelected.push({
@@ -161,7 +164,7 @@ class List {
           name: tagName,
         });
 
-        console.log(this.applianceSelected);
+        //console.log(this.applianceSelected);
 
         this.filterByAppl();
         this.displayRecipes();
@@ -183,8 +186,9 @@ class List {
         this.listenForFilteringIng();
         this.listenForFilteringUst();
 
-        this.closeTags();
         this.disableAllSelectedTag();
+        this.closeTags();
+
         closeAll();
       });
     });
@@ -203,7 +207,7 @@ class List {
       return false;
     });
 
-    console.log(this.filtered);
+    //console.log(this.filtered);
   }
 
   //réupérer les appareils restants dans les recettes sélectionnées afin de ne plus afficher que ceux-ci dans la liste
@@ -220,7 +224,7 @@ class List {
     let html = "";
     for (let i = 0; i < this.applianceSelected.length; i++) {
       let appSelected = this.applianceSelected[i];
-      html += `<span class="tagAppl tagsSelection"> ${appSelected.name} <i class="far fa-times-circle"></i></span>`;
+      html += `<span class="tagAppl tagsSelection" data-name="${appSelected.name}" data-id="${appSelected.id}"> ${appSelected.name} <i class="far fa-times-circle"></i></span>`;
     }
     document.querySelector(".tagsAppl").innerHTML = html;
   }
@@ -252,7 +256,7 @@ class List {
   listenForFilteringUst() {
     document.querySelectorAll(".ustensile-tag").forEach((tag) => {
       tag.addEventListener("click", (e) => {
-        console.log("on a cliqué sur " + e.target.getAttribute("data-name"));
+        //console.log("on a cliqué sur " + e.target.getAttribute("data-name"));
         let tagId = e.target.getAttribute("id");
         let tagName = e.target.getAttribute("data-name");
         this.ustensilsSelected.push({
@@ -260,7 +264,7 @@ class List {
           name: tagName,
         });
 
-        console.log(this.ustensilsSelected);
+        //console.log(this.ustensilsSelected);
 
         this.filterByUst();
         this.displayRecipes();
@@ -282,8 +286,9 @@ class List {
         this.listenForFilteringIng();
         this.listenForFilteringAppl();
 
-        this.closeTags();
         this.disableAllSelectedTag();
+        this.closeTags();
+
         closeAll();
       });
     });
@@ -302,7 +307,7 @@ class List {
       return false;
     });
 
-    console.log(this.filtered);
+    //console.log(this.filtered);
   }
 
   //réupérer les ustensils restants dans les recettes sélectionnées afin de ne plus afficher que ceux-ci dans la liste
@@ -321,7 +326,7 @@ class List {
     let html = "";
     for (let i = 0; i < this.ustensilsSelected.length; i++) {
       let ustSelected = this.ustensilsSelected[i];
-      html += `<span class="tagUst tagsSelection" data-id="${ustSelected.name}">${ustSelected.name} <i class="far fa-times-circle"></i></span>`;
+      html += `<span class="tagUst tagsSelection" data-name="${ustSelected.name}" data-id="${ustSelected.id}">${ustSelected.name} <i class="cross-ust far fa-times-circle"></i></span>`;
     }
     document.querySelector(".tagsUst").innerHTML = html;
   }
@@ -331,8 +336,60 @@ class List {
     document.querySelectorAll(".fa-times-circle").forEach((cross) => {
       cross.addEventListener("click", (e) => {
         e.target.parentNode.style.display = "none";
+        let dataName = e.target.parentNode.getAttribute("data-name");
+        let dataId = e.target.parentNode.getAttribute("data-id");
+        //console.log(dataName);
+        if (e.target.parentNode.classList.contains("tagIngr")) {
+          for (let i = 0; i < this.ingredientsSelected.length; i++) {
+            if (this.ingredientsSelected[i].name == dataName) {
+              this.ingredientsSelected.splice(i, 1);
+              this.alltagsSelected = this.ingredientsSelected.concat(
+                this.ustensilsSelected,
+                this.applianceSelected
+              );
 
-        console.log(e.target.parentNode);
+              document.getElementById(dataId).classList.remove("select");
+              //console.log(this.ingredientsSelected);
+            }
+          }
+        } else if (e.target.parentNode.classList.contains("tagAppl")) {
+          for (let i = 0; i < this.applianceSelected.length; i++) {
+            if (this.applianceSelected[i].name == dataName) {
+              this.applianceSelected.splice(i, 1);
+              this.alltagsSelected = this.ingredientsSelected.concat(
+                this.ustensilsSelected,
+                this.applianceSelected
+              );
+              document.getElementById(dataId).classList.remove("select");
+            }
+          }
+        } else {
+          for (let i = 0; i < this.ustensilsSelected.length; i++) {
+            if (this.ustensilsSelected[i].name == dataName) {
+              this.ustensilsSelected.splice(i, 1);
+              this.alltagsSelected = this.ingredientsSelected.concat(
+                this.ustensilsSelected,
+                this.applianceSelected
+              );
+              document.getElementById(dataId).classList.remove("select");
+            }
+          }
+        }
+
+        //console.log(e.target.parentNode);
+        /*this.displayRecipes();.log(
+          "tagsselSEL",
+          this.alltagsSelected,
+          this.ingredientsSelected,
+          this.applianceSelected,
+          this.ustensilsSelected
+        );*/
+
+        this.filtered = this.all;
+        this.filterByIng();
+        this.filterByUst();
+        this.filterByAppl();
+        this.displayRecipes();
       });
     });
   }
@@ -345,10 +402,10 @@ class List {
     );
     for (let i = 0; i < this.alltagsSelected.length; i++) {
       let tagIId = this.alltagsSelected[i].id;
-      let tagIName = this.alltagsSelected[i].name;
-      document.getElementById(tagIId).innerText = `(${tagIName})`;
-      document.getElementById(tagIId).style.pointerEvents = "none";
+
+      document.getElementById(tagIId).classList.add("select");
     }
+    //console.log("tagssel", this.alltagsSelected);
   }
 
   /*   BARRE DE RECHERCHE PRINCIPALE  */

@@ -269,6 +269,7 @@ main img {
 .ustensile-tag {
   width: 210px;
 }
+
 #drop-ing_open,
 #drop-app_open,
 #drop-ust_open {
@@ -339,12 +340,19 @@ main img {
   position: relative;
   bottom: 4.4rem;
 }
-.drop-menu_open a {
+.ingredient-tag,
+.appareil-tag,
+.ustensile-tag {
   text-decoration: none;
   font-style: "lato", sans-serif;
   font-size: 18;
   font-weight: 700;
   color: white;
+}
+.select {
+  font-style: italic;
+  color: #e7e7e7;
+  pointer-events: none;
 }
 
 /*RESPONSIVE*/
