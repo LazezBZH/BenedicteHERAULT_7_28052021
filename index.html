@@ -34,6 +34,7 @@
             class="search-all"
             type="search"
             placeholder="Rechercher un ingrédient, appareil, ustensile ou une recette"
+            autocomplete="off"
           />
           <i class="fas fa-search"></i>
         </div>
@@ -54,15 +55,18 @@
                   id="ingredients"
                   class="drop-input_closed drop-input_ingredients"
                   placeholder="Ingrédients"
+                  autocomplete="off"
                 />
                 <i class="fas fa-chevron-down" id="ingredients-down"></i>
               </div>
               <div id="drop-ing_open" class="drop-all_open drop-menu_open">
                 <div class="search-drop_all search-ing_all">
                   <input
-                    class="search-drop search-drop_ing"
+                    class="search-drop"
+                    id="search-drop_ing"
                     type="search"
                     placeholder="Rechercher un ingrédient"
+                    autocomplete="off"
                   />
                   <i class="fas fa-chevron-up" id="ingredients-up"></i>
                 </div>
@@ -79,15 +83,18 @@
                   id="appareil"
                   class="drop-input_closed drop-input_appareil"
                   placeholder="Appareil"
+                  autocomplete="off"
                 />
                 <i class="fas fa-chevron-down" id="appareil-down"></i>
               </div>
               <div id="drop-app_open" class="drop-all_open drop-menu_open">
                 <div class="search-drop_all search-app_all">
                   <input
-                    class="search-drop search-drop_app"
+                    class="search-drop"
+                    id="search-drop_app"
                     type="search"
                     placeholder="Rechercher un appareil"
+                    autocomplete="off"
                   />
                   <i class="fas fa-chevron-up" id="appareil-up"></i>
                 </div>
@@ -104,15 +111,18 @@
                   id="ustensiles"
                   class="drop-input_closed drop-input_ustensiles"
                   placeholder="Ustensiles"
+                  autocomplete="off"
                 />
                 <i class="fas fa-chevron-down" id="ustensiles-down"></i>
               </div>
               <div id="drop-ust_open" class="drop-all_open drop-menu_open">
                 <div class="search-drop_all search-ust_all">
                   <input
-                    class="search-drop search-drop_ust"
+                    class="search-drop"
+                    id="search-drop_ust"
                     type="search"
                     placeholder="Rechercher un ustensile"
+                    autocomplete="off"
                   />
                   <i class="fas fa-chevron-up" id="ustensiles-up"></i>
                 </div>
@@ -126,13 +136,16 @@
 
         <main class="recipes"></main>
       </div>
+
+      <script src="js/utils.js"></script>
       <script src="js/datas.js"></script>
 
       <script src="js/Recipe.js"></script>
       <script src="js/drops.js"></script>
-      <script src="js/utils.js"></script>
-      <script src="js/List.js"></script>
+
       <script src="js/allRecipeTerms.js"></script>
+      <script src="js/List.js"></script>
+
       <script src="js/index.js"></script>
     </body>
   </div>

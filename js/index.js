@@ -18,3 +18,7 @@ list.listenForFilteringAppl();
 list.collectUstensils();
 list.displayUstensils(list.ustensils);
 list.listenForFilteringUst();
+list.listenForFilteringAll();
+list.listenForFilteringInputIngr();
+list.listenForFilteringInputApp();
+list.listenForFilteringInputUst();
