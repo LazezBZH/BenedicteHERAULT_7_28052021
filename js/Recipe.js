@@ -122,4 +122,14 @@ class Recipe {
     this.terms = sortSet(this.terms);
     //console.log("TOUS LES MOTS DE:", recipe.id, recipe.name, this.terms);
   }
+
+  hasTerm(str) {
+    let exists = false;
+    this.terms.forEach((term) => {
+      if (term.includes(str)) {
+        exists = true;
+      }
+    });
+    return exists;
+  }
 }
