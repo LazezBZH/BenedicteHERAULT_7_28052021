@@ -475,6 +475,7 @@ class List {
   filterByAll() {
     this.filtered = this.filtered.filter((recipe) => {
       let count = 0;
+
       this.inputToCompare.forEach((objInput) => {
         if (recipe.hasTerm(objInput.name)) {
           count++;
@@ -509,6 +510,9 @@ class List {
   }
   filterByInputIngr() {
     let ingrTag = document.querySelectorAll(".ingredient-tag");
+    ingrTag.forEach((ing) => {
+      ing.style.display = "block";
+    });
     ingrTag.forEach((ingre) => {
       let name = normaliseForSearch(ingre.getAttribute("data-name"));
 
@@ -545,6 +549,9 @@ class List {
   }
   filterByInputApp() {
     let appTag = document.querySelectorAll(".appareil-tag");
+    appTag.forEach((app) => {
+      app.style.display = "block";
+    });
     appTag.forEach((appa) => {
       let name = normaliseForSearch(appa.getAttribute("data-name"));
 
@@ -577,6 +584,9 @@ class List {
   }
   filterByInputUst() {
     let ustTag = document.querySelectorAll(".ustensile-tag");
+    ustTag.forEach((ust) => {
+      ust.style.display = "block";
+    });
     ustTag.forEach((uste) => {
       let name = normaliseForSearch(uste.getAttribute("data-name"));
 
