@@ -9,9 +9,6 @@ class List {
     this.ustensilsSelected = [];
     this.alltagsSelected = [];
     this.search = " ";
-    this.inputIngrToCompare = [];
-    this.inputAppToCompare = [];
-    this.inputUstToCompare = [];
   }
 
   //COLLECTER ET AFFICHER LES RECETTES
@@ -509,16 +506,9 @@ class List {
     let ingredientsInput = document.getElementById("search-drop_ing");
 
     ingredientsInput.addEventListener("input", (e) => {
-      let textInput = normalise(e.target.value);
+      this.search = normalise(e.target.value);
 
-      console.log(textInput);
-
-      this.inputIngrToCompare.push({
-        id: textInput,
-        name: textInput,
-      });
-
-      console.log("inputIngrToCompare", this.inputIngrToCompare);
+      console.log("inputIngrToCompare", this.search);
       this.filterByInputIngr();
     });
   }
@@ -530,13 +520,7 @@ class List {
     ingrTag.forEach((ingre) => {
       let name = normaliseForSearch(ingre.getAttribute("data-name"));
 
-      let lastInputIngredient =
-        this.inputIngrToCompare[this.inputIngrToCompare.length - 1];
-
-      console.log("dernier input", lastInputIngredient.name);
-      //console.log(number);
-      console.log(name);
-      if (!name.includes(lastInputIngredient.name)) {
+      if (!name.includes(this.search)) {
         ingre.style.display = "none";
       }
     });
@@ -549,14 +533,9 @@ class List {
     let appareilInput = document.getElementById("search-drop_app");
 
     appareilInput.addEventListener("input", (e) => {
-      let textInput = normalise(e.target.value);
+      this.search = normalise(e.target.value);
 
-      console.log(textInput);
-
-      this.inputAppToCompare.push({
-        id: textInput,
-        name: textInput,
-      });
+      console.log("inputAppToCompare", this.search);
 
       this.filterByInputApp();
     });
@@ -569,10 +548,7 @@ class List {
     appTag.forEach((appa) => {
       let name = normaliseForSearch(appa.getAttribute("data-name"));
 
-      let lastInputAppareil =
-        this.inputAppToCompare[this.inputAppToCompare.length - 1];
-
-      if (!name.includes(lastInputAppareil.name)) {
+      if (!name.includes(this.search)) {
         appa.style.display = "none";
       }
     });
@@ -584,14 +560,9 @@ class List {
     let ustensilsInput = document.getElementById("search-drop_ust");
 
     ustensilsInput.addEventListener("input", (e) => {
-      let textInput = normalise(e.target.value);
+      this.search = normalise(e.target.value);
 
-      console.log(textInput);
-
-      this.inputUstToCompare.push({
-        id: textInput,
-        name: textInput,
-      });
+      console.log("inputUstToCompare", this.search);
 
       this.filterByInputUst();
     });
@@ -604,14 +575,9 @@ class List {
     ustTag.forEach((uste) => {
       let name = normaliseForSearch(uste.getAttribute("data-name"));
 
-      let lastInputUstensil =
-        this.inputUstToCompare[this.inputUstToCompare.length - 1];
-
-      if (!name.includes(lastInputUstensil.name)) {
+      if (!name.includes(this.search)) {
         uste.style.display = "none";
       }
     });
   }
-
-  displayError() {}
 }
