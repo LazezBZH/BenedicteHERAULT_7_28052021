@@ -8,7 +8,7 @@ class List {
     this.ustensils = [];
     this.ustensilsSelected = [];
     this.alltagsSelected = [];
-    this.inputToCompare = [];
+    this.search = " ";
     this.inputIngrToCompare = [];
     this.inputAppToCompare = [];
     this.inputUstToCompare = [];
@@ -95,6 +95,7 @@ class List {
 
         closeAll();
         document.getElementById("search-drop_ing").value = "";
+        document.getElementById("search-all").value = "";
       });
     });
   }
@@ -140,6 +141,7 @@ class List {
   //APPLIANCE
 
   //collecter et afficher
+
   collectAppliances() {
     this.filtered.forEach((recipe) => {
       this.appliances.push(recipe.appliance);
@@ -196,6 +198,7 @@ class List {
 
         closeAll();
         document.getElementById("search-drop_app").value = "";
+        document.getElementById("search-all").value = "";
       });
     });
   }
@@ -297,6 +300,7 @@ class List {
 
         closeAll();
         document.getElementById("search-drop_ust").value = "";
+        document.getElementById("search-all").value = "";
       });
     });
   }
@@ -437,23 +441,15 @@ class List {
     let mainInput = document.querySelector(".search-all");
 
     mainInput.addEventListener("input", (e) => {
-      let textInput = e.target.value;
+      let hasNewCharacters = !!(this.search.length <= e.target.value.length);
+      this.search = normalise(e.target.value);
+      let items = this.all;
+      if (hasNewCharacters) {
+        items = this.filtered;
+      }
 
-      console.log(textInput);
-
-      //this.inputToCompare.splice(0, 1, textInput);
-
-      this.inputToCompare.push({
-        id: textInput,
-        name: textInput,
-      });
-
-      console.log("inputToCompare", this.inputToCompare);
-
-      //this.textInputNorm = normalizeForSearch(this.textInput);
-
-      if (textInput.length > 2) {
-        this.filterByAll();
+      if (this.search.length > 2) {
+        this.filterByAll(items);
         this.displayRecipes();
 
         this.ustensilsAvailable = this.listAvailableUstensils();
@@ -467,25 +463,31 @@ class List {
         this.appliancesAvailable = this.listAvailableAppliances();
         this.appliancesAvailable = sortSet(this.appliancesAvailable);
         this.displayAppliances(this.appliancesAvailable);
+
+        this.listenForFilteringAppl();
+        this.listenForFilteringIng();
+        this.listenForFilteringUst();
+        if (this.filtered.length == 0) {
+          document.getElementById("filtered-empty").style.display = "block";
+        } else {
+          document.getElementById("filtered-empty").style.display = "none";
+        }
       } else {
         this.filtered = this.all;
+
+        this.displayRecipes();
       }
     });
   }
-  filterByAll() {
-    this.filtered = this.filtered.filter((recipe) => {
-      let count = 0;
+  filterByAll(items) {
+    let t0 = performance.now();
 
-      this.inputToCompare.forEach((objInput) => {
-        if (recipe.hasTerm(objInput.name)) {
-          count++;
-        }
-      });
-      if (count == this.inputToCompare.length) {
-        return true;
-      }
-      return false;
+    this.filtered = items.filter((recipe) => {
+      return !!recipe.hasTerm(this.search);
     });
+
+    let t1 = performance.now();
+    console.log('time to filter"' + this.search + '":' + (t1 - t0) + "ms");
   }
 
   /*   INPUT INGREDIENTS  */
@@ -495,7 +497,7 @@ class List {
     let ingredientsInput = document.getElementById("search-drop_ing");
 
     ingredientsInput.addEventListener("input", (e) => {
-      let textInput = e.target.value;
+      let textInput = normalise(e.target.value);
 
       console.log(textInput);
 
@@ -535,7 +537,7 @@ class List {
     let appareilInput = document.getElementById("search-drop_app");
 
     appareilInput.addEventListener("input", (e) => {
-      let textInput = e.target.value;
+      let textInput = normalise(e.target.value);
 
       console.log(textInput);
 
@@ -570,7 +572,7 @@ class List {
     let ustensilsInput = document.getElementById("search-drop_ust");
 
     ustensilsInput.addEventListener("input", (e) => {
-      let textInput = e.target.value;
+      let textInput = normalise(e.target.value);
 
       console.log(textInput);
 
@@ -598,4 +600,6 @@ class List {
       }
     });
   }
+
+  displayError() {}
 }

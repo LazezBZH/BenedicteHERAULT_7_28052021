@@ -60,7 +60,7 @@ class Recipe {
     });
 
     return `
-       <article>
+       <article id=${this.id}>
          <div class="photo"><img src="images/${this.id}.jpg"/></div>
          <div class="article-all">
             <div class="title">
@@ -79,40 +79,29 @@ class Recipe {
   collectTerms() {
     let recipe = this;
 
-    let nameToConcat = recipe.name;
-    let nameToConcatArray = nameToConcat.split(" ");
-
-    let applianceToConcat = recipe.appliance;
-
+    let nameToConcatArray = [normalise(recipe.name)];
+    let ingredientsToConcatArray = getIngredientsToConcat(recipe);
+    let applianceToConcat = [normalise(recipe.appliance)];
+    let ustensilsToConcatArray = getUstensilsToConcat(recipe);
     let descriptionToConcat = recipe.description;
-    let descriptionToConcatArray = descriptionToConcat.split(" ");
-
-    let ingredientsToConcatRecipeArray = getIngredientsToConcat(recipe);
-    let ingredientsToConcatArrayJoin = ingredientsToConcatRecipeArray.join(" ");
-    let ingredientsToConcatArray = ingredientsToConcatArrayJoin.split(" ");
-
-    let ustensilsToConcatRecipeArray = getUstensilsToConcat(recipe);
-    let ustensilsToConcatArrayJoin = ustensilsToConcatRecipeArray.join(" ");
-    let ustensilsToConcatArray = ustensilsToConcatArrayJoin.split(" ");
-
-    let recipeAllTermsArray = descriptionToConcatArray.concat(
-      nameToConcatArray,
-      applianceToConcat,
-      ingredientsToConcatArray,
-      ustensilsToConcatArray
-    );
-    let recipeAllTermsFilter = recipeAllTermsArray.filter((elt) => {
+    let descriptionNorm = normalise(descriptionToConcat);
+    let descriptionToConcatArray = descriptionNorm.split(" ");
+    let descriptionToBeConcatArray = descriptionToConcatArray.filter((elt) => {
       if (stopWords.includes(elt)) {
         return false;
       }
       return true;
     });
-    let recipeAllTermsJoin = recipeAllTermsFilter.join();
-    let recipeAllTermsJoinNorm = normaliseForSearch(recipeAllTermsJoin);
-    let recipeAllTermsJoinNormArray = recipeAllTermsJoinNorm.split(" ");
+
+    let recipeAllTermsArray = descriptionToBeConcatArray.concat(
+      nameToConcatArray,
+      applianceToConcat,
+      ingredientsToConcatArray,
+      ustensilsToConcatArray
+    );
 
     this.terms = new Set(
-      recipeAllTermsJoinNormArray.filter((elt) => {
+      recipeAllTermsArray.filter((elt) => {
         if (elt.length <= 2) {
           return false;
         }
