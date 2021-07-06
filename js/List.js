@@ -474,7 +474,19 @@ class List {
         }
       } else {
         this.filtered = this.all;
+        document.getElementById("filtered-empty").style.display = "none";
 
+        this.ustensilsAvailable = this.listAvailableUstensils();
+        this.ustensilsAvailable = sortSet(this.ustensilsAvailable);
+        this.displayUstensils(this.ustensilsAvailable);
+
+        this.ingredientsAvailable = this.listAvailableIngredients();
+        this.ingredientsAvailable = sortSet(this.ingredientsAvailable);
+        this.displayIngredients(this.ingredientsAvailable);
+
+        this.appliancesAvailable = this.listAvailableAppliances();
+        this.appliancesAvailable = sortSet(this.appliancesAvailable);
+        this.displayAppliances(this.appliancesAvailable);
         this.displayRecipes();
       }
     });
