@@ -496,7 +496,9 @@ class List {
     });
 
     let t1 = performance.now();
-    console.log('time to filter"' + this.search + '":' + (t1 - t0) + "ms");
+    console.log(
+      'time to filter with ALGO 1"' + this.search + '":' + (t1 - t0) + "ms"
+    );
   }
 
   /*   INPUT INGREDIENTS  */
