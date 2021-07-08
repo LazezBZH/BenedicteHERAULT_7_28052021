@@ -493,9 +493,11 @@ class List {
 
     this.filtered = items.filter((recipe) => {
       return (
-        !!recipe.hasIngInput(this.search) ||
-        !!recipe.hasAppInput(this.search) ||
-        !!recipe.hasUstInput(this.search)
+        !!recipe.hasInIng(this.search) ||
+        !!recipe.hasInApp(this.search) ||
+        !!recipe.hasInUst(this.search) ||
+        !!recipe.hasInTitle(this.search) ||
+        !!recipe.hasInDescription(this.search)
       );
     });
     let t1 = performance.now();

@@ -73,7 +73,7 @@ class Recipe {
   }
 
   //POUR ALGO 2
-  hasIngInput(str) {
+  hasInIng(str) {
     let exists = false;
     this.ingredients.forEach((ing) => {
       if (normalise(ing.ingredient).includes(str)) {
@@ -82,7 +82,7 @@ class Recipe {
     });
     return exists;
   }
-  hasAppInput(str) {
+  hasInApp(str) {
     let exists = false;
 
     if (normalise(this.appliance).includes(str)) {
@@ -90,13 +90,27 @@ class Recipe {
     }
     return exists;
   }
-  hasUstInput(str) {
+  hasInUst(str) {
     let exists = false;
     this.ustensils.forEach((ust) => {
       if (normalise(ust).includes(str)) {
         exists = true;
       }
     });
+    return exists;
+  }
+  hasInTitle(str) {
+    let exists = false;
+    if (normalise(this.name).includes(str)) {
+      exists = true;
+    }
+    return exists;
+  }
+  hasInDescription(str) {
+    let exists = false;
+    if (normalise(this.description).includes(str)) {
+      exists = true;
+    }
     return exists;
   }
 }
