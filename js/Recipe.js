@@ -10,9 +10,6 @@ class Recipe {
     this.time = data.time;
     this.ustensils = data.ustensils;
     this.id = data.id;
-    this.terms = new Set();
-
-    this.collectTerms();
   }
 
   hasIngredient(ingredient) {
@@ -75,47 +72,28 @@ class Recipe {
        </article>`;
   }
 
-  //regroupe dans un set tous les termes utiles d'une recette en vue de la recherche barre principale
-  collectTerms() {
-    let recipe = this;
-
-    let nameToConcatArray = [normalise(recipe.name)];
-    let ingredientsToConcatArray = getIngredientsToConcat(recipe);
-    let applianceToConcat = [normalise(recipe.appliance)];
-    let ustensilsToConcatArray = getUstensilsToConcat(recipe);
-    let descriptionToConcat = recipe.description;
-    let descriptionNorm = normalise(descriptionToConcat);
-    let descriptionToConcatArray = descriptionNorm.split(" ");
-    let descriptionToBeConcatArray = descriptionToConcatArray.filter((elt) => {
-      if (stopWords.includes(elt)) {
-        return false;
-      }
-      return true;
-    });
-
-    let recipeAllTermsArray = descriptionToBeConcatArray.concat(
-      nameToConcatArray,
-      applianceToConcat,
-      ingredientsToConcatArray,
-      ustensilsToConcatArray
-    );
-
-    this.terms = new Set(
-      recipeAllTermsArray.filter((elt) => {
-        if (elt.length <= 2) {
-          return false;
-        }
-        return true;
-      })
-    );
-    this.terms = sortSet(this.terms);
-    //console.log("TOUS LES MOTS DE:", recipe.id, recipe.name, this.terms);
-  }
-
-  hasTerm(str) {
+  //POUR ALGO 2
+  hasIngInput(str) {
     let exists = false;
-    this.terms.forEach((term) => {
-      if (term.includes(str)) {
+    this.ingredients.forEach((ing) => {
+      if (normalise(ing.ingredient).includes(str)) {
+        exists = true;
+      }
+    });
+    return exists;
+  }
+  hasAppInput(str) {
+    let exists = false;
+
+    if (normalise(this.appliance).includes(str)) {
+      exists = true;
+    }
+    return exists;
+  }
+  hasUstInput(str) {
+    let exists = false;
+    this.ustensils.forEach((ust) => {
+      if (normalise(ust).includes(str)) {
         exists = true;
       }
     });

@@ -492,11 +492,16 @@ class List {
     let t0 = performance.now();
 
     this.filtered = items.filter((recipe) => {
-      return !!recipe.hasTerm(this.search);
+      return (
+        !!recipe.hasIngInput(this.search) ||
+        !!recipe.hasAppInput(this.search) ||
+        !!recipe.hasUstInput(this.search)
+      );
     });
-
     let t1 = performance.now();
-    console.log('time to filter"' + this.search + '":' + (t1 - t0) + "ms");
+    console.log(
+      'time to filter with ALGO 2"' + this.search + '":' + (t1 - t0) + "ms"
+    );
   }
 
   /*   INPUT INGREDIENTS  */
