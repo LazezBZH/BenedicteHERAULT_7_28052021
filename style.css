@@ -204,7 +204,7 @@
   border: ridge 1rem rgb(208, 79, 79, 0.6);
 }
 #error-img {
-  width: 20%;
+  width: 25%;
 }
 main {
   max-width: 1440px;
@@ -431,5 +431,8 @@ main img {
   }
   .drop-ustensiles {
     margin-left: 0rem;
+  }
+  #error-img {
+    width: 100%;
   }
 }
