@@ -279,6 +279,7 @@ main img {
 }
 .drop-menu_open {
   width: 667px;
+  min-height: 16px;
   max-height: 397px;
   display: flex;
   flex-wrap: wrap;
