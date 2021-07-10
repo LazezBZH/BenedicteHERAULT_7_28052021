@@ -22,3 +22,19 @@ list.listenForFilteringAll();
 list.listenForFilteringInputIngr();
 list.listenForFilteringInputApp();
 list.listenForFilteringInputUst();
+
+//changer texte input principal pour responsive
+
+function changePlacholder() {
+  var placeholder = document.getElementById("search-all");
+  if ("matchMedia" in window) {
+    if (window.matchMedia("(max-width:480px)").matches) {
+      placeholder.placeholder = "Rechercher dans toute la recette";
+    } else {
+      placeholder.placeholder =
+        "Rechercher un ingrédient, appareil, ustensile ou une recette";
+    }
+  }
+}
+
+window.addEventListener("resize", changePlacholder, true);

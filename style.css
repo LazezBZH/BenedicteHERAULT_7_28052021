@@ -435,4 +435,11 @@ main img {
   #error-img {
     width: 100%;
   }
+  .search-every input::placeholder {
+    font-size: 0.5rem;
+  }
+  #search-all::placeholder {
+    font-size: 0.7rem;
+    opacity: 0.4;
+  }
 }
