@@ -440,7 +440,7 @@ class List {
     mainInput.addEventListener("input", (e) => {
       let hasNewCharacters = !!(this.search.length <= e.target.value.length);
       this.search = normalise(e.target.value);
-      let items = this.all;
+      let items = this.filtered;
       if (hasNewCharacters) {
         items = this.filtered;
       }
@@ -470,7 +470,7 @@ class List {
           document.getElementById("filtered-empty").style.display = "none";
         }
       } else {
-        this.filtered = this.all;
+        //this.filtered = this.all;
         document.getElementById("filtered-empty").style.display = "none";
 
         this.ustensilsAvailable = this.listAvailableUstensils();
