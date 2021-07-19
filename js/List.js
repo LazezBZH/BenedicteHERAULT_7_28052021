@@ -85,6 +85,7 @@ class List {
         this.listenForFilteringIng();
         this.listenForFilteringAppl();
         this.listenForFilteringUst();
+        this.listenForFilteringAll();
 
         this.disableAllSelectedTag();
 
@@ -92,7 +93,7 @@ class List {
 
         closeAll();
         document.getElementById("search-drop_ing").value = "";
-        document.getElementById("search-all").value = "";
+        //document.getElementById("search-all").value = "";
       });
     });
   }
@@ -189,13 +190,14 @@ class List {
         this.listenForFilteringAppl();
         this.listenForFilteringIng();
         this.listenForFilteringUst();
+        this.listenForFilteringAll();
 
         this.disableAllSelectedTag();
         this.closeTags();
 
         closeAll();
         document.getElementById("search-drop_app").value = "";
-        document.getElementById("search-all").value = "";
+        //document.getElementById("search-all").value = "";
       });
     });
   }
@@ -291,13 +293,14 @@ class List {
         this.listenForFilteringUst();
         this.listenForFilteringIng();
         this.listenForFilteringAppl();
+        this.listenForFilteringAll();
 
         this.disableAllSelectedTag();
         this.closeTags();
 
         closeAll();
         document.getElementById("search-drop_ust").value = "";
-        document.getElementById("search-all").value = "";
+        //document.getElementById("search-all").value = "";
       });
     });
   }
@@ -397,6 +400,9 @@ class List {
         this.filterByIng();
         this.filterByUst();
         this.filterByAppl();
+
+        this.filterByAll(this.filtered);
+
         this.appliancesAvailable = this.listAvailableAppliances();
         this.appliancesAvailable = sortSet(this.appliancesAvailable);
         this.displayAppliances(this.appliancesAvailable);
@@ -440,7 +446,10 @@ class List {
     mainInput.addEventListener("input", (e) => {
       let hasNewCharacters = !!(this.search.length <= e.target.value.length);
       this.search = normalise(e.target.value);
-      let items = this.filtered;
+      let items = this.all;
+      this.listenForFilteringIng();
+      this.listenForFilteringUst();
+      this.listenForFilteringAppl();
       if (hasNewCharacters) {
         items = this.filtered;
       }
@@ -470,7 +479,7 @@ class List {
           document.getElementById("filtered-empty").style.display = "none";
         }
       } else {
-        //this.filtered = this.all;
+        this.filtered = this.filtered;
         document.getElementById("filtered-empty").style.display = "none";
 
         this.ustensilsAvailable = this.listAvailableUstensils();
@@ -487,6 +496,7 @@ class List {
         this.displayRecipes();
       }
     });
+    this.closeTags();
   }
   filterByAll(items) {
     let t0 = performance.now();
