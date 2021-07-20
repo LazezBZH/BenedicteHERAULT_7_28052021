@@ -450,9 +450,11 @@ class List {
       this.filterByIng();
       this.filterByUst();
       this.filterByAppl();
+      this.disableAllSelectedTag();
       this.listenForFilteringIng();
       this.listenForFilteringUst();
       this.listenForFilteringAppl();
+
       if (hasNewCharacters) {
         items = this.filtered;
       }
@@ -476,6 +478,7 @@ class List {
         this.filterByIng();
         this.filterByUst();
         this.filterByAppl();
+        this.disableAllSelectedTag();
         this.listenForFilteringAppl();
         this.listenForFilteringIng();
         this.listenForFilteringUst();
@@ -503,6 +506,8 @@ class List {
         this.appliancesAvailable = this.listAvailableAppliances();
         this.appliancesAvailable = sortSet(this.appliancesAvailable);
         this.displayAppliances(this.appliancesAvailable);
+
+        this.disableAllSelectedTag();
 
         this.listenForFilteringAppl();
         this.listenForFilteringIng();
