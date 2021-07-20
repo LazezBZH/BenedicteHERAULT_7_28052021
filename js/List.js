@@ -479,13 +479,13 @@ class List {
         this.appliancesAvailable = sortSet(this.appliancesAvailable);
         this.displayAppliances(this.appliancesAvailable);
 
-        this.disableAllSelectedTag();
         this.listenForFilteringAppl();
         this.listenForFilteringIng();
         this.listenForFilteringUst();
         if (this.filtered.length == 0) {
           document.getElementById("filtered-empty").style.display = "block";
         } else {
+          this.disableAllSelectedTag();
           document.getElementById("filtered-empty").style.display = "none";
         }
       } else {
