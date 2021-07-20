@@ -60,7 +60,8 @@ class Recipe {
     });
 
     return `
-       <article id=${this.id}>
+       <article class="article" id=${this.id} tabindex="0">
+      
          <div class="photo"><img src="images/${this.id}.jpg"/></div>
          <div class="article-all">
             <div class="title">

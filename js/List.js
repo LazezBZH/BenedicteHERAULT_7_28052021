@@ -447,6 +447,9 @@ class List {
       let hasNewCharacters = !!(this.search.length <= e.target.value.length);
       this.search = normalise(e.target.value);
       let items = this.all;
+      this.filterByIng();
+      this.filterByUst();
+      this.filterByAppl();
       this.listenForFilteringIng();
       this.listenForFilteringUst();
       this.listenForFilteringAppl();
@@ -470,6 +473,9 @@ class List {
         this.appliancesAvailable = sortSet(this.appliancesAvailable);
         this.displayAppliances(this.appliancesAvailable);
 
+        this.filterByIng();
+        this.filterByUst();
+        this.filterByAppl();
         this.listenForFilteringAppl();
         this.listenForFilteringIng();
         this.listenForFilteringUst();
@@ -479,7 +485,11 @@ class List {
           document.getElementById("filtered-empty").style.display = "none";
         }
       } else {
-        this.filtered = this.filtered;
+        this.filtered = this.all;
+        this.filterByIng();
+        this.filterByUst();
+        this.filterByAppl();
+
         document.getElementById("filtered-empty").style.display = "none";
 
         this.ustensilsAvailable = this.listAvailableUstensils();
@@ -493,6 +503,11 @@ class List {
         this.appliancesAvailable = this.listAvailableAppliances();
         this.appliancesAvailable = sortSet(this.appliancesAvailable);
         this.displayAppliances(this.appliancesAvailable);
+
+        this.listenForFilteringAppl();
+        this.listenForFilteringIng();
+        this.listenForFilteringUst();
+
         this.displayRecipes();
       }
     });

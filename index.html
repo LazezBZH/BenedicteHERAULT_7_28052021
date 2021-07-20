@@ -19,8 +19,9 @@
       crossorigin="anonymous"
     />
   </head>
-  <div class="container">
-    <body>
+
+  <body>
+    <div class="container">
       <header>
         <a href="index.html">
           <img id="logo" src="logo.png" alt=" Les Petits Plats, logo" />
@@ -28,7 +29,7 @@
       </header>
 
       <!--Zone de recherche-->
-      <section class="search">
+      <div class="search">
         <div class="search-every">
           <input
             class="search-all"
@@ -45,9 +46,9 @@
           <div class="tagsAppl"></div>
           <div class="tagsUst"></div>
         </div>
-      </section>
+      </div>
       <div id="absolute">
-        <section class="search">
+        <div class="search">
           <div id="drop">
             <div class="drop drop-ingredients">
               <div id="drop-ingredients_closed" class="drop-menu_closed">
@@ -136,12 +137,12 @@
               </div>
             </div>
           </div>
-        </section>
-        <section id="filtered-empty">
+        </div>
+        <div id="filtered-empty">
           <img id="error-img" src="logo.png" alt=" Les Petits Plats, logo" />
           «Aucune recette ne correspond à votre critère… vous pouvez chercher
           "tarte aux pommes", "poisson" , etc.»
-        </section>
+        </div>
         <main class="recipes"></main>
       </div>
 
@@ -154,6 +155,6 @@
       <script src="js/List.js"></script>
 
       <script src="js/index.js"></script>
-    </body>
-  </div>
+    </div>
+  </body>
 </html>

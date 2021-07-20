@@ -201,7 +201,7 @@
   margin-top: 5rem;
   background-color: #d04f4f16;
   border-radius: 2rem;
-  border: ridge 1rem rgb(208, 79, 79, 0.6);
+  border: ridge 1rem rgba(208, 79, 79, 0.6);
 }
 #error-img {
   width: 25%;
@@ -239,6 +239,13 @@ main img {
   background-color: #e7e7e7;
   border-radius: 0 0 5px 5px;
 }
+.article:hover,
+.article:focus {
+  transform: scale(1.02);
+  transition: 200ms;
+  border: solid 5px rgba(208, 79, 79, 0.8);
+  border-radius: 10px;
+}
 .title,
 .details {
   display: flex;
@@ -249,7 +256,7 @@ main img {
   padding-right: 1px;
   display: flex;
   flex-direction: column;
-  font-style: "lato", sans-serif;
+  font-family: "lato", sans-serif;
   font-size: 12px;
   width: 171px;
   height: 105px;
@@ -258,18 +265,18 @@ main img {
 .details-txt {
   width: 171px;
   height: 107px;
-  font-style: "roboto", sans-serif;
+  font-family: "roboto", sans-serif;
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 700;
   overflow: scroll;
 }
 .title {
-  font-style: "lato", sans-serif;
+  font-family: "lato", sans-serif;
   font-size: 18px;
   font-weight: 700;
 }
 .title-txt {
-  font-style: "lato", sans-serif;
+  font-family: "lato", sans-serif;
   font-size: 18px;
   font-weight: 400;
 }
@@ -368,8 +375,8 @@ main img {
 .appareil-tag,
 .ustensile-tag {
   text-decoration: none;
-  font-style: "lato", sans-serif;
-  font-size: 18;
+  font-family: "lato", sans-serif;
+  font-size: 18px;
   font-weight: 700;
   color: white;
 }
@@ -415,6 +422,7 @@ main img {
     margin: auto;
     margin-bottom: 2%;
   }
+
   .fa-chevron-up {
     font-size: 1rem;
 
