@@ -450,7 +450,7 @@ class List {
       this.filterByIng();
       this.filterByUst();
       this.filterByAppl();
-      this.disableAllSelectedTag();
+      //this.disableAllSelectedTag();
       this.listenForFilteringIng();
       this.listenForFilteringUst();
       this.listenForFilteringAppl();
@@ -462,6 +462,10 @@ class List {
       if (this.search.length > 2) {
         this.filterByAll(items);
         this.displayRecipes();
+
+        this.filterByIng();
+        this.filterByUst();
+        this.filterByAppl();
 
         this.ustensilsAvailable = this.listAvailableUstensils();
         this.ustensilsAvailable = sortSet(this.ustensilsAvailable);
@@ -475,9 +479,6 @@ class List {
         this.appliancesAvailable = sortSet(this.appliancesAvailable);
         this.displayAppliances(this.appliancesAvailable);
 
-        this.filterByIng();
-        this.filterByUst();
-        this.filterByAppl();
         this.disableAllSelectedTag();
         this.listenForFilteringAppl();
         this.listenForFilteringIng();
@@ -508,7 +509,6 @@ class List {
         this.displayAppliances(this.appliancesAvailable);
 
         this.disableAllSelectedTag();
-
         this.listenForFilteringAppl();
         this.listenForFilteringIng();
         this.listenForFilteringUst();
