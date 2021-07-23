@@ -1,3 +1,4 @@
+//pour collecte de tous les termes
 function normalise(str) {
   return str
     .normalize("NFD")
@@ -5,6 +6,7 @@ function normalise(str) {
     .toLowerCase();
 }
 
+//pour affichages tags (création des id)
 function normaliseName(str) {
   return str
     .normalize("NFD")
@@ -14,9 +16,9 @@ function normaliseName(str) {
     .replace(/[\(-\)]/g, "");
 }
 
+//pour recherche input dropdown
 function normaliseForSearch(str) {
   return str
-
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
@@ -24,11 +26,13 @@ function normaliseForSearch(str) {
     .replace(/[^a-zA-Z ]/g, " ");
 }
 
+//trier un set
 function sortSet(setList) {
   let list = Array.from(setList).sort();
   return new Set(list);
 }
 
+//pour alléger tableau recherche principale (source:  https://countwordsfree.com/stopwords/french)
 const stopWords = [
   "abord",
   "afin",

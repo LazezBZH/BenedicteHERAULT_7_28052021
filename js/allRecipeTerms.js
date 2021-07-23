@@ -1,3 +1,5 @@
+//récupération de tous les termes afin de créer un tableau dans lequel l'algo 1 effectuera sa recherche
+
 function getIngredientsToConcat(recipe) {
   let ingredientsToConcatArray = [];
   let ingr = recipe.ingredients;

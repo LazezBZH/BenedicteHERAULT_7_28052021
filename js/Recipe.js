@@ -15,35 +15,6 @@ class Recipe {
     this.collectTerms();
   }
 
-  hasIngredient(ingredient) {
-    let exists = false;
-    this.ingredients.forEach((ing) => {
-      if (ing.ingredient === ingredient) {
-        exists = true;
-      }
-    });
-    return exists;
-  }
-
-  hasAppliance(appl) {
-    let exists = false;
-
-    if (this.appliance === appl) {
-      exists = true;
-    }
-    return exists;
-  }
-
-  hasUstensil(ust) {
-    let exists = false;
-    this.ustensils.forEach((ustensil) => {
-      if (ustensil === ust) {
-        exists = true;
-      }
-    });
-    return exists;
-  }
-
   render() {
     let ingredientHtml = "";
 
@@ -74,6 +45,36 @@ class Recipe {
             </div>
          </div>
        </article>`;
+  }
+
+  //pour filtres sur tags
+  hasIngredient(ingredient) {
+    let exists = false;
+    this.ingredients.forEach((ing) => {
+      if (ing.ingredient === ingredient) {
+        exists = true;
+      }
+    });
+    return exists;
+  }
+
+  hasAppliance(appl) {
+    let exists = false;
+
+    if (this.appliance === appl) {
+      exists = true;
+    }
+    return exists;
+  }
+
+  hasUstensil(ust) {
+    let exists = false;
+    this.ustensils.forEach((ustensil) => {
+      if (ustensil === ust) {
+        exists = true;
+      }
+    });
+    return exists;
   }
 
   //regroupe dans un set tous les termes utiles d'une recette en vue de la recherche barre principale
@@ -112,7 +113,7 @@ class Recipe {
     this.terms = sortSet(this.terms);
     //console.log("TOUS LES MOTS DE:", recipe.id, recipe.name, this.terms);
   }
-
+  //recherche principale pour algo 1
   hasTerm(str) {
     let exists = false;
     this.terms.forEach((term) => {

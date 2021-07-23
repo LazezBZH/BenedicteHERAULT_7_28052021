@@ -93,7 +93,6 @@ class List {
 
         closeAll();
         document.getElementById("search-drop_ing").value = "";
-        //document.getElementById("search-all").value = "";
       });
     });
   }
@@ -197,7 +196,6 @@ class List {
 
         closeAll();
         document.getElementById("search-drop_app").value = "";
-        //document.getElementById("search-all").value = "";
       });
     });
   }
@@ -300,7 +298,6 @@ class List {
 
         closeAll();
         document.getElementById("search-drop_ust").value = "";
-        //document.getElementById("search-all").value = "";
       });
     });
   }
@@ -450,7 +447,7 @@ class List {
       this.filterByIng();
       this.filterByUst();
       this.filterByAppl();
-      //this.disableAllSelectedTag();
+
       this.listenForFilteringIng();
       this.listenForFilteringUst();
       this.listenForFilteringAppl();

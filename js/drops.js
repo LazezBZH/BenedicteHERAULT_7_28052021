@@ -1,3 +1,5 @@
+//gère déroulement et fermeture des drops down
+
 let dropIngrBtn = document.getElementById("ingredients-down");
 let dropAppBtn = document.getElementById("appareil-down");
 let dropUstBtn = document.getElementById("ustensiles-down");
